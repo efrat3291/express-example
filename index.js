@@ -1,4 +1,5 @@
 const express = require("express");
+const logger = require("./logger")
 const app = express();
 const { v4: uuidv4 } = require('uuid');
 const PORT = 3000;
@@ -10,6 +11,9 @@ let books = [
 ];
 
 app.use(express.json());
+
+
+app.use(logger);
 
 app.get("/books", (req, res) => {
     res.json(books);
